@@ -1,42 +1,349 @@
-#root {
-  max-width: 1280px;
+/* Fonts & base styles */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+}
+.App {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
+}
+
+/* Header & Footer */
+header {
+  margin-bottom: 1rem;
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+#headerTitle {
+  font-size: 2.5rem;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
+footer .footer {
+  text-align: center;
+  padding: .5rem;
   color: #888;
+}
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #f1f1f1;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
+  gap: 0.5rem;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+}
+
+.search-bar input::placeholder {
+  color: #888;
+}
+
+.search-bar svg {
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+/* Filter Buttons */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem auto;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  background: none;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 1rem;
+}
+
+.filters button:hover {
+  background-color: #deded3;
+}
+
+/* BoardGrid layout */
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* BoardCard */
+.board-card {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.board-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.board-card img {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+}
+.board-info {
+  padding: .75rem;
+  flex: 1;
+}
+.board-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: .25rem;
+}
+.board-info p {
+  font-size: .9rem;
+  color: #555;
+}
+.board-info small {
+  color: #777;
+}
+.deleteButton {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  border: none;
+  background: rgba(255,80,80,0.8);
+  color: white;
+  padding: .25rem .5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.0;
+  transition: opacity .2s;
+}
+.board-card:hover .deleteButton {
+  opacity: 1;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 1rem;
+}
+
+.modal-container {
+  background: #fff;
+  border-radius: 24px;
+  max-width: 900px;
+  width: 80%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.modal-board-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.form-left {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-box {
+  background: #eee;
+  border-radius: 20px;
+  width: 100%;
+  height: 300px;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+label {
+  font-size: 13px;
+}
+
+input{
+  font-size: 12px;
+}
+
+.input-field, textarea, select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.input-field::placeholder {
+  color: #999;
+  font-size: 13px;
+}
+
+.input-field:focus,
+select:focus {
+  outline: none;
+  border-color: #888;
+}
+
+.url-btn {
+  padding: 0.6rem 1rem;
+  background: #eee;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.form-right {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background: #007b7f;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background: #eee;
+}
+
+
+/* Create Card Form */
+.create-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+.create-card input {
+  padding: .5rem;
+  flex: 1 1 120px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Cards layout */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.card-item {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.card-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.card-item h4 {
+  margin: .75rem;
+}
+.card-item p {
+  margin: 0 .75rem .75rem;
+  color: #555;
+}
+.card-footer {
+  margin-top: auto;
+  padding: .5rem .75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+}
+.card-footer span {
+  font-size: .85rem;
+  color: #888;
+}
+.card-footer button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: .5rem;
+}
+.watchedButton.watched,
+.favoriteButton.favorited {
+  transform: scale(1.2);
+}
+
+/* BoardDetail */
+.board-detail button {
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media(max-width: 600px) {
+  .board-grid, .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
 }
