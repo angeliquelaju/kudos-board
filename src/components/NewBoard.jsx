@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const generateId = () =>
   Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
@@ -6,29 +6,40 @@ const generateId = () =>
 export default function NewBoard({ addBoard }) {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({
-    title: '',
-    description: '',
-    category: 'celebration',
-    image: '',
-    author: ''
+    title: "",
+    description: "",
+    category: "celebration",
+    image: "",
+    author: "",
   });
-  const [previewUrl, setPreviewUrl] = useState('');
+  const [previewUrl, setPreviewUrl] = useState("");
 
   const handleLoadImage = () => {
-    if (form.image === '') return alert('please enter a valid image URL');
+    if (form.image === "") return alert("please enter a valid image URL");
     setPreviewUrl(form.image);
   };
 
   const submit = (e) => {
     e.preventDefault();
-    if (!form.image) return alert('image is required');
+    if (!form.image) return alert("image is required");
     addBoard({ ...form, id: generateId(), cards: [] });
-    setForm({ title: '', description: '', category: 'celebration', image: '', author: '' });
-    setPreviewUrl('');
+    setForm({
+      title: "",
+      description: "",
+      category: "celebration",
+      image: "",
+      author: "",
+    });
+    setPreviewUrl("");
     setOpen(false);
   };
 
-  if (!open) return <button onClick={() => setOpen(true)}>+ create new board</button>;
+  if (!open)
+    return (
+      <button onClick={() => setOpen(true)} className="newBoardButton">
+        + create new board
+      </button>
+    );
 
   return (
     <div className="modal-overlay" onClick={() => setOpen(false)}>
@@ -51,7 +62,13 @@ export default function NewBoard({ addBoard }) {
               placeholder="paste image URL here"
               value={form.image}
               onChange={(e) => setForm({ ...form, image: e.target.value })}
-              style={{ marginTop: '1rem', padding: '0.5rem', width: '100%', borderRadius: '10px', border: '1px solid #ccc' }}
+              style={{
+                marginTop: "1rem",
+                padding: "0.5rem",
+                width: "100%",
+                borderRadius: "10px",
+                border: "1px solid #ccc",
+              }}
             />
             <button type="button" className="url-btn" onClick={handleLoadImage}>
               load image
@@ -73,7 +90,9 @@ export default function NewBoard({ addBoard }) {
               placeholder="add a detailed description"
               className="input-field"
               value={form.description}
-              onChange={(e) => setForm({ ...form, description: e.target.value })}
+              onChange={(e) =>
+                setForm({ ...form, description: e.target.value })
+              }
               required
             />
             <label htmlFor="author">author</label>
@@ -97,7 +116,9 @@ export default function NewBoard({ addBoard }) {
 
             <div className="modal-buttons">
               <button type="submit">create board</button>
-              <button type="button" onClick={() => setOpen(false)}>cancel</button>
+              <button type="button" onClick={() => setOpen(false)}>
+                cancel
+              </button>
             </div>
           </div>
         </form>

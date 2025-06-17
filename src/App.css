@@ -5,10 +5,13 @@ body {
   background: #f5f5f5;
   color: #333;
 }
+
 .App {
-  max-width: 1200px;
+  width: 100vw; /* full screen width */
+  max-width: 100%; 
   margin: 0 auto;
   padding: 1rem;
+  overflow-x: hidden; /* prevents horizontal scroll */
 }
 
 /* Header & Footer */
@@ -24,6 +27,7 @@ footer .footer {
   padding: .5rem;
   color: #888;
 }
+
 /* Search Bar */
 .search-bar {
   display: flex;
@@ -80,45 +84,68 @@ footer .footer {
   background-color: #deded3;
 }
 
-/* BoardGrid layout */
-.board-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
+.filterNCreate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
 }
 
-/* BoardCard */
+.filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+
+/* Pages layout */
+.board-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 1rem;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+/* Board */
 .board-card {
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
-  transition: transform .2s, box-shadow .2s;
+  width: 100%; 
+  max-width: 180px; 
+  height: 280px; 
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+
 .board-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 .board-card img {
-  width: 50%;
-  height: auto;
+  width: auto;
+  height: 200px; 
   object-fit: cover;
+  border-bottom: 1px solid #eee;
+  border-radius: 8px;
 }
+
 .board-info {
   padding: .75rem;
   flex: 1;
 }
 .board-info h3 {
   font-size: 1.3rem;
-  margin-bottom: .25rem;
+  margin-top: -7px;
+  margin-bottom: 0px
 }
 .board-info p {
-  font-size: .9rem;
+  font-size: 12px;
   color: #555;
 }
+
 .board-info small {
   color: #777;
 }
@@ -137,6 +164,10 @@ footer .footer {
 }
 .board-card:hover .deleteButton {
   opacity: 1;
+}
+
+.newBoardButton {
+  justify-content: center;
 }
 
 /* Modal */
@@ -272,7 +303,7 @@ select:focus {
 }
 
 
-/* Create Card Form */
+/* Create Card */
 .create-card {
   display: flex;
   flex-wrap: wrap;

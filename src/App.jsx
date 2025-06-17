@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import NewBoard from "./components/NewBoard";
 import Pages from "./components/Pages";
 import BoardDetail from "./components/BoardDetail";
 import "./App.css";
@@ -8,7 +7,7 @@ const defaultBoard = {
   id: "welcome",
   title: "welcome",
   description: "sample",
-  category: "inspiration",
+  category: "celebration",
   image: "https://i.pinimg.com/originals/a0/60/3d/a0603d56281458975b50f23247503d5e.jpg",
   author: "auto",
   cards: [],
@@ -22,7 +21,7 @@ function App() {
     setBoards([defaultBoard]);
   }, []);
 
-  const addBoard = (board) => setBoards([board, ...boards]);
+  const addBoard = board => setBoards([board, ...boards]);
   const deleteBoard = (id) => {
     setBoards((prev) => prev.filter((b) => b.id !== id));
     if (selectedBoard?.id === id) setSelectedBoard(null);
@@ -63,13 +62,11 @@ function App() {
 
       {!selectedBoard ? (
         <>
-          <div className="dashboard-header">
-            <NewBoard addBoard={addBoard} />
-          </div>
           <Pages
             boards={boards}
             onSelect={setSelectedBoard}
             onDelete={deleteBoard}
+            onAdd={addBoard}
           />
         </>
       ) : (
