@@ -49,7 +49,7 @@ export default function CreateCard({ boardId, addCard }) {
     <div className="modal-overlay">
       <div className="modal-container">
         <form className="modal-card-form" onSubmit={handleSubmit}>
-          <h2>Add Card</h2>
+          <h2>add card</h2>
           <label htmlFor="title">title</label>
           <input
             className="input-field"

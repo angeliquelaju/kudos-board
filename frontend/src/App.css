@@ -12,6 +12,66 @@ body {
   margin: 0 auto;
   padding: 16px;
   overflow-x: hidden; 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+.App.light, .board-detail.light {
+  color: #000000;
+}
+
+.App.dark, .board-detail.dark, body.dark, html.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.dark h2,
+.dark p {
+  color: #f0f0f0;
+}
+
+/* Button style */
+.darkmode-btn {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.App.dark .filters button,
+.App.dark .search-bar input,
+.App.dark .search-bar button,
+.App.dark .dashboard-header button,
+.App.dark .board-card,
+.App.dark .board-info, 
+.App.dark .deleteButton, .searchButton, .dark button {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border-color: #555;
+}
+
+.dark .upvote, .dark .pin{
+  color: black;
+}
+
+.App.dark .search-bar {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+}
+
+.App.dark .search-bar input {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+.App.dark .searchButton,
+.App.dark .clearButton {
+  background: #1e1e1e;
+  color: #eee;
+  border:none;
 }
 
 /* Header & Footer */
@@ -62,6 +122,7 @@ footer .footer {
 .searchButton, .clearButton {
   background: none;
   padding: 0px;
+  border: none;
 }
 
 /* Filter Buttons */
@@ -444,14 +505,19 @@ select:focus {
 .cardButtons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 0px;
 }
 
 .cardButtons button {
   background: none;
   border: none;
-  font-size: 17px;
+  font-size: 14px;
   cursor: pointer;
+}
+
+.card-item.pinned {
+  border: 2px solid #007b7f;
+  background-color: #f0f8ff;
 }
 
 /* GIF */

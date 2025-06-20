@@ -7,6 +7,7 @@ function App() {
   const [boards, setBoards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const baseURL = "https://kudos-board-backend-zocu.onrender.com";
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     fetch(`${baseURL}/boards`)
@@ -118,10 +119,47 @@ function App() {
       .catch((err) => console.error("Error deleting card:", err));
   };
 
+  const pinCard = (id, currentlyPinned) => {
+    const action = currentlyPinned ? "unpin" : "pin";
+    fetch(`${baseURL}/cards/${id}/${action}`, { method: "PUT" })
+      .then((res) => {
+        return res.json();
+      })
+      .then((updatedCard) => {
+        setBoards((prev) =>
+          prev.map((b) => ({
+            ...b,
+            cards: b.cards.map((c) =>
+              c.id === updatedCard.id ? updatedCard : c
+            ),
+          }))
+        );
+        if (selectedBoard?.id) {
+          setSelectedBoard((prev) => ({
+            ...prev,
+            cards: prev.cards.map((c) =>
+              c.id === updatedCard.id ? updatedCard : c
+            ),
+          }));
+        }
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    document.body.className = newMode ? "dark" : "light";
+    document.documentElement.className = newMode ? "dark" : "light";
+  };
+
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? "dark" : "light"}`}>
       <header>
         <h1>kudos board</h1>
+        <button onClick={toggleDarkMode} className="darkmode-btn">
+          {darkMode ? "☀️ light mode" : "🌙 dark mode"}
+        </button>
       </header>
 
       {!selectedBoard ? (
@@ -140,6 +178,8 @@ function App() {
           onAddCard={addCard}
           onUpvote={upvoteCard}
           onDeleteCard={deleteCard}
+          onPinCard={pinCard}
+          toggleDarkMode={toggleDarkMode}
         />
       )}
 
