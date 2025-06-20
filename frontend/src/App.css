@@ -7,24 +7,24 @@ body {
 }
 
 .App {
-  width: 100vw; /* full screen width */
+  width: 100vw;
   max-width: 100%; 
   margin: 0 auto;
-  padding: 1rem;
-  overflow-x: hidden; /* prevents horizontal scroll */
+  padding: 16px;
+  overflow-x: hidden; 
 }
 
 /* Header & Footer */
 header {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   text-align: center;
 }
 #headerTitle {
-  font-size: 2.5rem;
+  font-size: 40px;
 }
 footer .footer {
   text-align: center;
-  padding: .5rem;
+  padding: 8px;
   color: #888;
 }
 
@@ -32,13 +32,13 @@ footer .footer {
 .search-bar {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
+  padding: 12px 16px;
   background-color: #f1f1f1;
-  border-radius: 1.5rem;
+  border-radius: 24px;
   width: 100%;
   max-width: 600px;
-  margin: 1rem auto;
-  gap: 0.5rem;
+  margin: 16px auto;
+  gap: 8px;
 }
 
 .search-bar input {
@@ -46,7 +46,7 @@ footer .footer {
   border: none;
   background: transparent;
   outline: none;
-  font-size: 1rem;
+  font-size: 16px;
   color: #333;
 }
 
@@ -55,29 +55,34 @@ footer .footer {
 }
 
 .search-bar svg {
-  font-size: 1.2rem;
+  font-size: 19px;
   color: #aaa;
+}
+
+.searchButton, .clearButton {
+  background: none;
+  padding: 0px;
 }
 
 /* Filter Buttons */
 .filters {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
-  margin: 1rem auto;
+  gap: 8px;
+  margin: 16px auto;
   flex-wrap: wrap;
 }
 
 .filters button {
   background: none;
   border: none;
-  padding: 0.5rem 0.8rem;
-  font-size: 1rem;
+  padding: 8px 14px;
+  font-size: 16px;
   font-weight: 500;
   color: #000;
   cursor: pointer;
   transition: all 0.2s ease;
-  border-radius: 1rem;
+  border-radius: 16px;
 }
 
 .filters button:hover {
@@ -88,12 +93,12 @@ footer .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem 0;
+  margin: 16px 0;
 }
 
 .filters {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 
@@ -102,8 +107,8 @@ footer .footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; 
-  gap: 1rem;
-  padding: 2rem;
+  gap: 16px;
+  padding: 32px;
   margin: 0 auto;
 }
 
@@ -133,11 +138,11 @@ footer .footer {
 }
 
 .board-info {
-  padding: .75rem;
+  padding: 12px;
   flex: 1;
 }
 .board-info h3 {
-  font-size: 1.3rem;
+  font-size: 20px;
   margin-top: -7px;
   margin-bottom: 0px
 }
@@ -151,12 +156,12 @@ footer .footer {
 }
 .deleteButton {
   position: absolute;
-  top: .5rem;
-  right: .5rem;
+  top: 8px;
+  right: 8px;
   border: none;
   background: rgba(255,80,80,0.8);
   color: white;
-  padding: .25rem .5rem;
+  padding: 4px 8px;
   border-radius: 4px;
   cursor: pointer;
   opacity: 0.0;
@@ -179,7 +184,8 @@ footer .footer {
   align-items: center;
   justify-content: center;
   z-index: 999;
-  padding: 1rem;
+  padding: 16px;
+  overflow-y: auto;
 }
 
 .modal-container {
@@ -188,16 +194,17 @@ footer .footer {
   max-width: 900px;
   width: 80%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
+  max-height: 700px; 
+  overflow-y: auto; 
 }
 
 .modal-board-form {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 32px;
   background: white;
   border-radius: 20px;
-  padding: 2rem;
+  padding: 32px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
@@ -219,7 +226,7 @@ footer .footer {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .preview-img {
@@ -227,6 +234,16 @@ footer .footer {
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
+}
+
+.image-url-input {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  color: #333;
 }
 
 label {
@@ -239,13 +256,13 @@ input{
 
 .input-field, textarea, select {
   width: 100%;
-  padding: 0.9rem 1rem;
+  padding: 14px 16px;
   border: 1px solid #ccc;
   border-radius: 10px;
   background: #fff;
-  font-size: 1rem;
+  font-size: 16px;
   color: #333;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   transition: border-color 0.2s ease;
 }
 
@@ -267,7 +284,7 @@ select:focus {
   border-radius: 12px;
   cursor: pointer;
   font-weight: 500;
-  margin-top: 0.5rem;
+  margin-top: 8px;
 }
 
 .form-right {
@@ -279,17 +296,17 @@ select:focus {
 
 .modal-buttons {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .modal-buttons button {
   flex: 1;
-  padding: 0.75rem;
+  padding: 12px;
   border: none;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -307,69 +324,157 @@ select:focus {
 .create-card {
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem;
-  margin-bottom: 1rem;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 .create-card input {
-  padding: .5rem;
+  padding: 8px;
   flex: 1 1 120px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+/*Card Modal*/
+.modal-card-form {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 2px;
+}
+
+.modal-card-form h2 {
+  margin-bottom: 10px;
+}
+
+.modal-card-form .input-field,
+.modal-card-form input[type="text"] {
+  width: 100%;
+  padding: 14px 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.modal-card-form .gif-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-card-form .gif-thumbnail {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  max-height: 120px;
+  transition: border 0.2s ease-in-out;
+}
+
+.modal-card-form .gif-thumbnail.selected {
+  border: 2px solid blue;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-buttons button:first-child {
+  background-color: #007b7f;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background-color: #eee;
 }
 
 /* Cards layout */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
 }
+
 .card-item {
   background: white;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  width: 100%;
+  max-width: 220px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
 }
+
+.card-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
 .card-item img {
   width: 100%;
-  height: 140px;
+  height: 160px;
   object-fit: cover;
+  border-radius: 20px 20px 0 0;
 }
+
 .card-item h4 {
-  margin: .75rem;
+  margin: 12px 0 0px;
+  font-size: 19px;
+  font-weight: 600;
+  text-align: center; 
 }
+
 .card-item p {
-  margin: 0 .75rem .75rem;
-  color: #555;
+  font-size: 14px;
+  color: #777;
 }
-.card-footer {
-  margin-top: auto;
-  padding: .5rem .75rem;
+
+.cardButtons {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid #eee;
+  justify-content: center;
+  gap: 20px;
 }
-.card-footer span {
-  font-size: .85rem;
-  color: #888;
-}
-.card-footer button {
+
+.cardButtons button {
+  background: none;
   border: none;
-  background: transparent;
+  font-size: 17px;
   cursor: pointer;
-  font-size: 1rem;
-  margin-left: .5rem;
 }
-.watchedButton.watched,
-.favoriteButton.favorited {
-  transform: scale(1.2);
+
+/* GIF */
+.gif-results {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.gif-thumbnail {
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s ease-in-out;
+}
+
+.gif-thumbnail.selected {
+  border: 2px solid blue;
 }
 
 /* BoardDetail */
 .board-detail button {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 /* Responsive */

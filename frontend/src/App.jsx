@@ -6,20 +6,21 @@ import "./App.css";
 function App() {
   const [boards, setBoards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
+  const baseURL = "https://kudos-board-backend-zocu.onrender.com";
 
   useEffect(() => {
-    fetch("http://localhost:3000/boards")
+    fetch(`${baseURL}/boards`)
       .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch boards");
         return res.json();
       })
-      .then((data) => setBoards(data.length ? data : [deafaultBoard]))
+      .then((data) => setBoards(Array.isArray(data) ? data : []))
       .catch((err) => {
         console.error("Error loading boards:", err);
       });
   }, []);
+
   const addBoard = (board) => {
-    fetch("http://localhost:3000/boards", {
+    fetch(`${baseURL}/boards`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(board),
@@ -30,7 +31,7 @@ function App() {
   };
 
   const deleteBoard = (id) => {
-    fetch(`http://localhost:3000/boards/${id}`, {
+    fetch(`${baseURL}/boards/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -41,12 +42,22 @@ function App() {
   };
 
   const addCard = (boardId, card) => {
-    fetch("http://localhost:3000/cards", {
+    const cardData = {
+      boardId,
+      title: card.title,
+      description: card.description,
+      gif: card.gif,
+      author: card.author,
+    };
+
+    fetch(`${baseURL}/cards`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...card, boardId }),
+      body: JSON.stringify(cardData),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((newCard) => {
         setBoards((prev) =>
           prev.map((b) =>
@@ -63,16 +74,36 @@ function App() {
   };
 
   const upvoteCard = (id) => {
-    const update = (cards) =>
-      cards.map((c) => (c.id === id ? { ...c, votes: c.votes + 1 } : c));
-    setBoards((prev) => prev.map((b) => ({ ...b, cards: update(b.cards) })));
-    setSelectedBoard((prev) =>
-      prev ? { ...prev, cards: update(prev.cards) } : prev
-    );
+    fetch(`${baseURL}/cards/${id}/upvote`, {
+      method: "PUT",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((updatedCard) => {
+        setBoards((prevBoards) =>
+          prevBoards.map((board) => ({
+            ...board,
+            cards: board.cards.map((card) =>
+              card.id === updatedCard.id ? updatedCard : card
+            ),
+          }))
+        );
+
+        if (selectedBoard) {
+          setSelectedBoard((prevBoard) => ({
+            ...prevBoard,
+            cards: prevBoard.cards.map((card) =>
+              card.id === updatedCard.id ? updatedCard : card
+            ),
+          }));
+        }
+      })
+      .catch((err) => console.error("Error upvoting card:", err));
   };
 
   const deleteCard = (id) => {
-    fetch(`http://localhost:3000/cards/${id}`, {
+    fetch(`${baseURL}/cards/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -120,4 +151,3 @@ function App() {
 }
 
 export default App;
-

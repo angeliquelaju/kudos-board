@@ -8,7 +8,7 @@ export default function BoardDetail({ board, onBack, onAddCard, onUpvote, onDele
       <button onClick={onBack}>← back</button>
       <h2>{board.title}</h2>
       <p>{board.description}</p>
-      <CreateCard boardId={board.id} onAddCard={onAddCard} />
+      <CreateCard boardId={board.id} addCard={onAddCard} />
       <div className="cards-grid">
         {board.cards.map(card => (
           <CardItem key={card.id} card={card} onUpvote={onUpvote} onDelete={() => onDeleteCard(card.id)} />

@@ -62,14 +62,9 @@ export default function NewBoard({ addBoard }) {
               placeholder="paste image URL here"
               value={form.image}
               onChange={(e) => setForm({ ...form, image: e.target.value })}
-              style={{
-                marginTop: "1rem",
-                padding: "0.5rem",
-                width: "100%",
-                borderRadius: "10px",
-                border: "1px solid #ccc",
-              }}
+              className="image-url-input"
             />
+
             <button type="button" className="url-btn" onClick={handleLoadImage}>
               load image
             </button>
