@@ -17,12 +17,20 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
+  const boardId = parseInt(req.params.id);
   const board = await prisma.board.findUnique({
-    where: { id },
-    include: { cards: true },
+    where: { id: boardId },
+    include: {
+      cards: {
+        orderBy: [
+          { pinned: "desc" },
+          { pinnedAt: "desc" },
+          { createdAt: "asc" },
+        ],
+      },
+    },
   });
-  board ? res.json(board) : res.status(404).send("Board not found");
+  res.json(board);
 });
 
 router.delete("/:id", async (req, res) => {
