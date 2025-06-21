@@ -6,7 +6,7 @@ export default function Board({ board, onClick, onDelete }) {
       <img src={board.image} alt={board.title} />
       <div className="board-info">
         <h3>{board.title}</h3>
-        <p>{board.author}</p>
+        <p>{board.category}</p>
       </div>
       <button
         className="deleteButton"
