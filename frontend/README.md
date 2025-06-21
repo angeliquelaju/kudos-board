@@ -135,9 +135,9 @@ Deployed Application (**required**): (https://kudos-board-uc4g.onrender.com/)
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
+"https://www.loom.com/embed/b5bc1db758d94920884ec1c5171f986e?sid=ef2ae6d6-f36b-4bd8-a23d-3fbc29090429"
 
-`ADD_EMBEDDED_CODE_HERE`
+"https://www.loom.com/embed/c58579e24dc647bc9e8846233716d472?sid=55d09fad-3f5b-4d2f-89b8-ea74d7f1a0af"
 
 ### Reflection
 
